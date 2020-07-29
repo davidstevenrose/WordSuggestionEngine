@@ -1,6 +1,6 @@
-package com.company.main;
+package com.shamus.main;
 
-import com.company.datax.NGramGenerator;
+import com.shamus.datax.NGramGenerator;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,6 +16,9 @@ import javafx.util.Pair;
  * This program performs a map reduce on a bigram to determine three suggested words to insert into
  * a sentence given the first word as input. The confidence threshold is 65%.
  *
+ * To use this application, obtain the package <i>com.company.datax</i> here: <br />
+ * https://github.com/davidstevenrose/WordSuggestionEngine/tree/master/src/com/company/datax
+ *
  * @author drose
  */
 public class Main {
@@ -23,7 +26,7 @@ public class Main {
   private static final String[] connectors = {"the", "this", "of"};
 
   public static void printRecomendation(String s) {
-    System.out.println("Your next word might be: " + s);
+    System.out.println("Your next word might be: " + s + ".");
   }
 
   /**
@@ -39,6 +42,8 @@ public class Main {
     try {
       bigrams = NGramGenerator.buildMap(filePath);
     } catch (IOException e) {
+      System.out.println("Sorry, either you did not provide a valid file path parameter or "
+          + "something else happened.");
       e.printStackTrace();
       System.exit(1);
     }
@@ -71,6 +76,7 @@ public class Main {
         //collect the second value in bigram and the confidence
         .map(entry -> new Pair(entry.getKey().getValue(), entry.getValue()))
         .forEach(highestConfidence::add);
+
     //select top three results
     int recIndex = 0;
     int connIndex = 0;
@@ -84,6 +90,7 @@ public class Main {
       connIndex++;
       recIndex++;
     }
+
     //print top three results
     Arrays.asList(recommendation).forEach(Main::printRecomendation);
   }

@@ -1,4 +1,4 @@
-package com.company.datax;
+package com.shamus.datax;
 
 import java.util.List;
 import java.util.Map;
