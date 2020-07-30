@@ -38,4 +38,4 @@ the program will return three very common words by default. Otherwise, the
 program will return at most the three closest suggestions to continue the sentence. 
 
 ## Licence
-[]()
+[MIT Licence](https://github.com/davidstevenrose/WordSuggestionEngine/blob/master/LICENSE)
