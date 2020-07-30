@@ -40,7 +40,7 @@ public class Main {
     //parse input
     Map<Pair<String, String>, Integer> bigrams = null;
     try {
-      bigrams = NGramGenerator.buildMap(filePath);
+      bigrams = NGramGenerator.buildBigramMap(filePath);
     } catch (IOException e) {
       System.out.println("Sorry, either you did not provide a valid file path parameter or "
           + "something else happened.");

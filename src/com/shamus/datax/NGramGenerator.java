@@ -28,7 +28,7 @@ public class NGramGenerator {
    * @return a map of pairs that are associated with the count they appear in the text input
    * @throws IOException if the file does not exist at path p
    */
-  public static Map<Pair<String, String>, Integer> buildMap(Path p) throws IOException {
+  public static Map<Pair<String, String>, Integer> buildBigramMap(Path p) throws IOException {
     Stream<String> content = Files.lines(p);
     //holds all of the grams in the file
     List<String> grams = content

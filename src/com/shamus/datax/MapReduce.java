@@ -4,25 +4,26 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import javafx.util.Pair;
 
 /**
- * Performs a map reduce of bi-grams on a list of paired strings.
+ * Performs a map reduce of objects in a list and returns a Map<E, Integer>.
  *
  * @author drose
  */
 public class MapReduce {
 
   /**
-   * Reduces a list of bigrams to a map with count.
+   * Reduces a list of objects to a map with count.
    *
-   * @param list the list of all bigrams as pairs.
-   * @return a reduced map that counts the occurrences of each bigram.
+   * @param list the list of all objects of type E.
+   * @return a reduced map that counts the occurrences of each object.
+   *  Key type: Object E
+   *  Value type: Integer
    */
-  public static Map<Pair<String, String>, Integer> reduceToMap(List<Pair<String, String>> list) {
+  public static <E> Map<E, Integer> reduceToMap(List<E> list) {
     //mapping every word to one
-    Map<Pair<String, String>, Integer> bigramMap = list.stream()
+    Map<E, Integer> reducedMap = list.stream()
         .collect(Collectors.toMap(Function.identity(), key -> 1, Integer::sum));
-    return bigramMap;
+    return reducedMap;
   }
 }
