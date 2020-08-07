@@ -21,6 +21,8 @@ import javafx.util.Pair;
  */
 public class NGramGenerator {
 
+  private NGramGenerator(){}
+
   /**
    * Creates a bigram reduced map from the given text input.
    *
@@ -42,6 +44,37 @@ public class NGramGenerator {
         .forEach(bigrams::add);
     //all bigrams collected, generating and returning map reduce of bigrams
     return MapReduce.reduceToMap(bigrams);
+  }
+
+  /**
+   * Creates an n-gram map with the count each key occurred in the document.
+   *
+   * @param p the directory path to the file for n-gram processing
+   * @param n the value of 'n'-gram
+   * @return a map of n-grams that are associated with the amount of occurrences in the document
+   * @throws IOException Path p does not exist or some other I/O error occurred opening the file
+   * @throws IllegalArgumentException if n is less than or equal to 0. In the case n is greater than
+   * the amount of words in the document, then n will be reduced to the actual size of the document.
+   */
+  public static Map<String, Integer> buildNGramMap(Path p, int n) throws IOException{
+    if(n <= 0){
+      throw new IllegalArgumentException("n = "+ n);
+    }
+    Stream<String> content = Files.lines(p);
+    List<String> grams = content
+        .map(String::toLowerCase)
+        .flatMap(li -> Stream.of(li.split("\\W+")))
+        .collect(Collectors.toList());
+    //collect ngrams
+    List<String> ngrams = new ArrayList<>();
+    if(n > grams.size()){
+      n = grams.size();
+    }
+    int finalN = n;
+    IntStream.range(0,grams.size()-n+1)
+        .mapToObj(i -> String.join(" ", grams.subList(i,i+finalN)))
+        .forEach(ngrams::add);
+    return MapReduce.reduceToMap(ngrams);
   }
 
   /**

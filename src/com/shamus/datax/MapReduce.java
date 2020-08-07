@@ -12,6 +12,8 @@ import java.util.stream.Collectors;
  */
 public class MapReduce {
 
+  private MapReduce(){}
+
   /**
    * Reduces a list of objects to a map with count.
    *

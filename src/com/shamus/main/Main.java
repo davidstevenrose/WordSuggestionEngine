@@ -16,8 +16,8 @@ import javafx.util.Pair;
  * This program performs a map reduce on a bigram to determine three suggested words to insert into
  * a sentence given the first word as input. The confidence threshold is 65%.
  *
- * To use this application, obtain the package <i>com.company.datax</i> here: <br />
- * https://github.com/davidstevenrose/WordSuggestionEngine/tree/master/src/com/company/datax
+ * To use this application, obtain the package <i>com.shamus.datax</i> here: <br />
+ * https://github.com/davidstevenrose/WordSuggestionEngine/tree/master/src/com/shamus/datax
  *
  * @author drose
  */
