@@ -13,8 +13,8 @@
 This project suggest words by vectorizing the learning input into bi-grams.
 
 ### Built With
-* [com.shamus.datax.MapReduce](https://github.com/davidstevenrose/WordSuggestionEngine/tree/master/src/com/company/datax)
-* [com.shamus.datax.NGramGenerator](https://github.com/davidstevenrose/WordSuggestionEngine/tree/master/src/com/company/datax)
+* [com.shamus.datax.MapReduce](https://github.com/davidstevenrose/WordSuggestionEngine/tree/master/src/com/shamus/datax)
+* [com.shamus.datax.NGramGenerator](https://github.com/davidstevenrose/WordSuggestionEngine/tree/master/src/com/shamus/datax)
 
 ## Getting Started
 
